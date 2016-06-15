@@ -1,0 +1,75 @@
+filter_medlo: &medlo90
+  status:
+    - 'New'
+    - 'In Progress'
+    - 'Confirmed'
+    - 'Triaged'
+    - 'Incomplete'
+  importance:
+    - 'Medium'
+    - 'Low'
+    - 'Wishlist'
+  milestone: "9.0"
+
+filter_medlo: &hicri90
+  milestone: '9.0'
+  status:
+    - 'New'
+    - 'In Progress'
+    - 'Confirmed'
+    - 'Triaged'
+    - 'Incomplete'
+  importance:
+    - 'Critical'
+    - 'High'
+
+
+tasks:
+  # - description: 'Move all medium and lower bugs to next and mark as wont fix in old'
+  #   project: "fuel"
+  #   filter: *medlo90
+  #   series:
+  #     "fuel/newton":    # create bug_task that would copy all data
+  #       milestone: "10.0"
+  #     "fuel/mitaka":    # target, if exists then create subtask for the series
+  #                       # or update if bug_task already in a seria
+  #       status: "Won't Fix"
+  #       milestone: "9.0"
+
+  # - description: 'Move all medium and lower bugs to next and mark as wont fix in old'
+  #   project: "mos"
+  #   filter: *medlo90
+  #   series:
+  #     "mos/10.0.x":
+  #       milestone: "10.0"
+  #     "mos/9.0.x":
+  #       status: "Won't Fix"
+  #       milestone: "9.0"
+
+  - description: 'Target all High and Critical bugs to next and current release'
+    project: "fuel"
+    filter: *hicri90
+    update_existing: true
+    series:
+      "newton":    # create bug_task that would copy all data
+        milestone: "10.0"
+      "mitaka":    # target, if exists then create subtask for the series
+                   # or update if bug_task already in a seria
+        milestone: "9.0"
+
+  - description: 'Target all High and Critical bugs to next and current release'
+    project: "mos"
+    filter: *hicri90
+    update_existing: true
+    series:
+      "10.0.x":
+        milestone: "10.0"
+      "9.0.x":
+        milestone: "9.0"
+
+    # change:
+    #   series: "mitaka"   # target, if exists then create subtask for the series
+    #                      # or update if bug_task already in a seria
+    # add:
+    #   series: "newton"   # if new series is the same as active_series, then alter project
+    #                      # bug_task otherwise create a bug_task that would copy all data

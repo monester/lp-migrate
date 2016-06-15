@@ -1,0 +1,5 @@
+/.tox
+*.pyc
+lp_release_migrator_credentials.conf
+*.log
+*.db

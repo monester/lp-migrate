@@ -1,0 +1,19 @@
+{
+    "projects": {
+        "type": "array",
+        "items": {
+            "type": "string"
+        }
+    },
+    "tasks": {
+        "type": "array",
+        "items": {
+            "description": {"type": "string"},
+            "status": {
+                "type": "array",
+                "type": "string"
+            }
+
+        }
+    }
+}

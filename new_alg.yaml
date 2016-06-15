@@ -1,0 +1,22 @@
+Configuration File (config.yaml):
+match:
+  importance: ['Medium', 'Low', 'Wishlist']
+  status: ['New', 'Confirmed']
+  milestones: ['8.0', '9.0']
+
+action:
+- milestone: '10.0'
+
+algorithm:
+- run
+- parse incoming parameters
+    - load configuration
+    - load environment variables
+    - load run parameters
+- create LP object
+- search all bugs matching criteria
+- move all bugs to new milestone
+    - mark milestone bug_task in old milestone as "won't fix"
+    - add new bug_task with new milestone
+- show report
+
